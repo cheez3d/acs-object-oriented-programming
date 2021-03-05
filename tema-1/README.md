@@ -50,6 +50,9 @@ Acest subdirector conține proiectul [Eclipse][eclipse] corespunzător **Temei 1
 ## Cerințe
 Cerințele acestei aplicații, pentru o înțelegere mai bună a demonstrației de mai sus, se găsesc în [req.pdf][req-pdf].
 
+## Detalii de implementare
+Am plecat de la testele furnizate orientativ și am implementat sistemul VMS fără interfață grafică, după care am legat interfața grafică la VMS.
+
 ## Codul sursă
 Codul sursă al proiectului se găsește în [directorul src][src], componentele din care este format sistemul fiind următoarele:
 * [`util`][util]: diverse clase auxiliare ce facilitează implementarea funcționalităților
@@ -71,13 +74,16 @@ Codul sursă al proiectului se găsește în [directorul src][src], componentele
   * [`notification`][notification]: notificări ce apar când se modifică campaniile
     * [`Notification`][notification-java]
     * [`NotificationType`][notification-type-java]
-  * [`ui`][ui]: componenta de interfațare grafică cu utilizatorul
+  * [`ui`][ui]: componenta de interfațare grafică cu utilizatorul; interfața grafică se află în totalitate în acest pachet; aceasta interacționează în mod direct cu clasa [`VMS`][vms-java] pentru
+configurarea elementelor acesteia cu datele potrivite
     * [`AdminPane`][admin-pane-java]
     * [`GuestPane`][guest-pane-java]
     * [`LaunchDialogs`][launch-dialogs-java]
     * [`LoginPane`][login-pane-java]
     * [`NoBorderTableCellRenderer`][no-border-table-cell-renderer-java]
     * [`Window`][window-java]
+    ### Notă
+    Pentru accesarea meniului cu mai multe opțiuni după logare în interfața grafică se face _click_-dreapta pe un element din tabel.
   * [`user`][user]: modelul unui utilizator
     * [`User`][user-java]
     * [`UserType`][user-type-java]
@@ -87,7 +93,12 @@ Codul sursă al proiectului se găsește în [directorul src][src], componentele
     * [`LoyaltyVoucher`][loyalty-voucher-java]
     * [`Voucher`][voucher-java]
     * [`VoucherStatusType`][voucher-status-type-java]
-  * [`VMS`][vms-java]
+  * [`VMS`][vms-java]: are mai multe clase imbricate cu ajutorul cărora rezolvă diferite sarcini
+    * `Reader`: clasă utilizată pentru citirea fișierelor text, fie ele fișiere de test (e.g. `campaigns.txt`, `users.txt`, `events.txt`) sau alte tipuri de fișiere (e.g. `emails.txt`)
+    * `AccessController`: clasă utilizată pentru a verifica dacă utilizatorul care dorește să efectueze o acțiune are voie să o facă
+    * `Test`: clasă utilizată pentru rularea testelor
+    * `Config`: clasă utilizată pentru salvarea configurației interfeței grafice în fișierul `config.xml`
 
 ## Biblioteci utilizate
-* [LGoodDatePicker 10.4.1][lgooddatepicker]
+* [LGoodDatePicker 10.4.1][lgooddatepicker]: pentru realizarea meniului de alegere a datelor pentru
+      începutul unei campanii, sfârșitul unei campanii etc. în cadrul interfeței grafice
