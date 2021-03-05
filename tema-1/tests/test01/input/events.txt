@@ -1,0 +1,13 @@
+2018-08-03 13:00
+11
+1;generateVoucher;1;USER_1_MAIL;GiftVoucher;10
+1;generateVoucher;1;USER_1_MAIL;GiftVoucher;10
+1;redeemVoucher;1;1;2018-08-03 13:01
+1;cancelCampaign;1;2018-08-03 13:20
+1;getNotifications
+1;getVouchers
+1;addCampaign;3;Campaign_3;Description_3;2018-08-04 12:50;2018-08-05 12:50;100;A
+1;generateVoucher;3;USER_2_MAIL;LoyaltyVoucher;10
+1;editCampaign;3;Campaign_3_NEW;Description_3_NEW;2019-08-04 12:50;2018-08-05 12:50;100
+2;getNotifications
+1;getObservers;1
